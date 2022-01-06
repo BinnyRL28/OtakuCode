@@ -1,0 +1,24 @@
+header{
+    min-height: 85px;
+    width: 100%;
+    background: linear-gradient(to right, rgb(255, 196, 0), rgb(240, 51, 215));
+}
+
+body{
+    background-color: rgb(27, 27, 27);
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+
+form{
+    float: right;
+    border-radius: 20px;
+    border: 2px solid black;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
