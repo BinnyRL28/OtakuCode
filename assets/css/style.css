@@ -1,7 +1,7 @@
 header{
-    min-height: 85px;
+    min-height: 65px;
     width: 100%;
-    background: linear-gradient(to right, rgb(255, 196, 0), rgb(240, 51, 215));
+    background: linear-gradient(to right, #ff9900 , rgb(247, 3, 97));
 }
 
 body{
@@ -12,13 +12,26 @@ body{
     margin: 0;
 }
 
-form{
-    float: right;
+#inicioSesion{
+    float: left;
     border-radius: 20px;
     border: 2px solid black;
     padding: 15px;
     display: flex;
     flex-direction: column;
+    color:white;
+    align-items: center;
 }
+main{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#informacionAdicional{
+    outline: 1px solid white;
+}
+
+
 
 
