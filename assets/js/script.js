@@ -28,6 +28,7 @@ $(document).ready(function(){
       e.preventDefault();
       // Esto hará que el login desaparezca
       $("#contenedorLogin").hide();
+      $("#contenidoWeb").hide();
       // Esto hara que el formulario de registro aparezca
       $("#contenedorRegistar").show();
     })
@@ -42,19 +43,29 @@ $(document).ready(function(){
     //Campo Password
     var password = $("#registroPassword").val();
     // Metodo de firebase que permite registro de usarios con email
+
+    if (password.length<6) {
+      alert("Deben ser 6 carácteres como mínimo")
+    };
+
     auth
     .createUserWithEmailAndPassword(email, password)
     .then(userCredential => {
       // ocultar formulario de registro
       $("#contenedorRegistar").hide();
+      $("#contenidoWeb").show();
       // limpiar formulario de registro
-      $("#registroUsuario").trigger("reset");
+      $("#registroUsuario").trigger("reset"); 
     })
+
     .catch((error) => { // Esto permite capturar el error, se puede trabajar este catch con los codigos de error
       var errorCode = error.code;
       var errorMessage = error.message;
       // Muestro en la consola el codigo de error y el mensaje de error
       console.log(errorCode, errorMessage);
     });
+
+
+   
 })
 });
