@@ -16,6 +16,7 @@
 <body class="bg-black">
     <header>
         <h2>OtakuCode</h2>
+        <button class="btn m-3" id="btn-CerrarSesion" >Cerrar Sesión</button>
     </header>
     <section>
         <main>
@@ -59,7 +60,7 @@
     
                 </div>
                 <div class="m-2 ">
-                    <p><strong>Si no tienes una cuenta creada </strong><button type="button" class="btn bg-white p-1">Registrate</button></p>
+                    <p><strong>Si no tienes una cuenta creada </strong><button type="button" class="btn bg-white p-1 " id="butonRegistrate">Registrate</button></p>
                 </div>
              </form>
              </div>
@@ -86,10 +87,10 @@
                         />
                       </div>
                       <div class="col-12">
-                        <button id="btnRegistrar" type="submit" class="btn btn-primary">
+                        <button id="butonRegistrar" type="submit" class="btn btn-primary">
                           Registrar
                         </button>
-                        <button id="btnVolverRegistro" class="btn btn-danger">
+                        <button id="butonVolverRegistro" class="btn btn-danger">
                           Volver
                         </button>
                       </div>
@@ -136,6 +137,22 @@
                     </div>
                 </form>
             </div>
+            <div class="card bg-dark text-white mx-auto" id="contenidoWeb" style="border-radius: 1rem; width: 800px;">
+              <div class="card-body">
+                <form id="postForm"action="">
+                  
+                  <h5>Escribe tu mensaje</h5>
+                  <label class="form-label" for="postText">Mensaje</label>
+                  <div class="form-outline form-white mb-4">
+                    <textarea class="form-control form-control-lg" id="postText" rows="3"></textarea>
+                  </div>
+                  <button id="btnSendPost" class="btn btn-outline-light btn-lg px-5" type="submit">Postear</button>
+                </form>
+              </div>
+            </div>
+            <div id="postList">
+              
+            </div>
         </main>
     </section>
     <script
@@ -145,6 +162,10 @@
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <!-- CDN Firestore Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- js personalizado -->
     <script src="assets/js/script.js"></script>
 </body>
 </html>

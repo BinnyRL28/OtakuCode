@@ -2,6 +2,8 @@ header{
     min-height: 45px;
     width: 100%;
     background: linear-gradient(to right, #ff9900 , rgb(247, 3, 97));
+    display: flex;
+    outline: 2px solid green;
 }
 
 body{
@@ -26,8 +28,8 @@ main{
     /* background-color: rgb(27, 27, 27); */
     /* background-color: black; */
     display:flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    /* justify-content: space-around; */
     align-items: center;
     /* outline: 1px solid yellow; */
     height: 680px;
@@ -116,4 +118,11 @@ main{
     
 }
 
+#btn-CerrarSesion{
+    float: right;
+    outline:1px solid blue;
+}
 
+header h2{
+    width:89%;
+}
