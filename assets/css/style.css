@@ -96,6 +96,7 @@ main{
     
     border-image-slice: 1;
     border-radius: 20px;
+    margin:10px;
     }
 
 #bloque4{
@@ -125,4 +126,20 @@ main{
 
 header h2{
     width:89%;
+}
+
+#btnSendPost{
+    background: linear-gradient( rgb(247, 3, 97), #ff9900);
+}
+
+
+@media only screen and (max-width: 600px){
+    header{
+        width:100%;
+    }
+
+    #contenedorLogin{
+        display:flex;
+        flex-direction: column;
+    }
 }
