@@ -22,3 +22,8 @@ Inicio de Sesión en celular - Primeros diseños
 <p align="center">
   <img src="assets/img/IniciodeSesiónencelular-Primerosdiseños.png" width="600"/>
 </p>
+
+Contenido de Posteo - Primeros diseños
+<p align="center">
+  <img src="assets/img/ContenidodePosteo-Primerosdiseños.png" width="600"/>
+</p>
