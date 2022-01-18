@@ -10,15 +10,15 @@ Animate a encontrar fandoms con los que compartir tu entusiasmo en el anime aqu�
 <h1>Proceso de diseño</h1>
 Inicio de seción(Login) - Primeras Ideas
 <p align="center">
-  <img src="assets/img/Iniciodeseción(Login)PrimerasIdeas" width="600"/>
+  <img src="assets/img/Iniciodeseción(Login)PrimerasIdeas.png" width="600"/>
 </p>
 
 Pagina de Perfil - Borradores
 <p align="center">
-  <img src="assets/img/PaginadePerfil-Borradores(1)" width="600"/>
+  <img src="assets/img/PaginadePerfil-Borradores(1).png" width="600"/>
 </p>
 
 Inicio de Sesión en celular - Primeros diseños
 <p align="center">
-  <img src="assets/img/IniciodeSesiónencelular-Primerosdiseños" width="600"/>
+  <img src="assets/img/IniciodeSesiónencelular-Primerosdiseños.png" width="600"/>
 </p>
