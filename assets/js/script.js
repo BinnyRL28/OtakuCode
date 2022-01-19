@@ -76,7 +76,7 @@ $(document).ready(function(){
   $("#butonIngresoCorreo").click(function (e) {
     e.preventDefault();
     // Mostramos formulario de ingreso por email
-    $("#input_parameters").show();
+    $("#contenedorLogin").show();
     // Ocultamos boton de ingreso por email
     $("#butonIngresoCorreo").hide();
     $("#login").hide();
@@ -155,7 +155,7 @@ $(document).ready(function(){
       // Se oculta formulario de registro
       $(".registro-usuario").hide();
       // Se oculta formulario de ingreso
-      $("#input_parameters").hide();
+      $("#contenedorLogin").hide();
       // Se muestra el boton de ingreso por email
       $("#butonIngresoCorreo").show();
       // Se oculta contenido de la página
@@ -167,6 +167,65 @@ $(document).ready(function(){
     }
   });
 
+   // Boton enviar formulario post
+   $("#btnSendPost").click(function (e) {
+    e.preventDefault();
+    // Capturo los datos enviados desde el formulario con id "postForm"
+    var mensaje = $("#postText").val();
 
+    if (mensaje.length > 0) {
+      // Metodo de escritura para añadir elementos a la coleccion "post", 
+      // si la coleccion no existe, la crea implicitamente
+      var d = new Date();
+      var strDate = d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
+      var strHours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+      db.collection("posts").add({
+        mensaje: mensaje,
+        fecha: strDate,
+        hora: strHours
+      })
+        .then((docRef) => {
+          console.log("Document written with ID: ", docRef.id);
+          // Reseteo el formulario de registro de paises
+          $("#postForm").trigger("reset");
+          // Invoco al metodo obtienePost()
+          obtienePost();
+        })
+        .catch((error) => {
+          console.error("Error adding document: ", error);
+        });
+    } else {
+      alert('Favor completar todos los campos');
+    }
+
+  });
+
+  // Metodo que sirve para mostrar los países en la tabla
+  function postList(data) {
+    $("#postList").empty();
+    if (data.length > 0) {
+      let html = '';
+      data.forEach(doc => {
+        const post = doc.data();
+        const div = `
+          <div class="card bg-dark text-white  mt-3 mx-auto" style="border-radius: 1rem; width: 800px;">
+            <div class="card-body">
+              <p>${post.mensaje}</p>
+              <p>Publicado el ${post.fecha} a las ${post.hora}</p>
+            </div>
+          </div>
+        `;
+        html += div;
+      });
+      $("#postList").append(html);
+    }
+  };
+
+  // Metodo que permite obtener los datos de la BD
+  function obtienePost() {
+    db.collection("posts").get().then((snapshot) => {
+      postList(snapshot.docs);
+    })
+  };
     
 });
