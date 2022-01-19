@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
 // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -27,10 +29,9 @@ $(document).ready(function(){
     $("#butonRegistrate").click(function (e) {
       e.preventDefault();
       // Esto hará que el login desaparezca
-      $("#contenedorLogin").hide();
-      $("#contenidoWeb").hide();
+      $("#login").hide();
       // Esto hara que el formulario de registro aparezca
-      $("#contenedorRegistar").show();
+      $(".registro-usuario").show();
     })
 
 
@@ -45,15 +46,15 @@ $(document).ready(function(){
     // Metodo de firebase que permite registro de usarios con email
 
     if (password.length<6) {
-      alert("Deben ser 6 carácteres como mínimo")
+      alert(" ⚠️ Deben ser 6 carácteres como mínimo")
     };
 
     auth
     .createUserWithEmailAndPassword(email, password)
     .then(userCredential => {
       // ocultar formulario de registro
-      $("#contenedorRegistar").hide();
-      $("#contenidoWeb").show();
+      $(".registro-usuario").hide();
+      // $("#contenidoWeb").show();
       // limpiar formulario de registro
       $("#registroUsuario").trigger("reset"); 
     })
@@ -62,37 +63,24 @@ $(document).ready(function(){
       var errorCode = error.code;
       var errorMessage = error.message;
       // Muestro en la consola el codigo de error y el mensaje de error
-      console.log(errorCode, errorMessage);
+      if (error.code == 'auth/email-already-in-use') {
+        $("#alert-login-registro").removeClass("d-none");
+        $("#alert-login-registro").addClass("d-block");
+      }
     });
-
-  //   // Si se completa el formulario de registro y se envia, registra al nuevo usuario y se guarda la sesion
-  // $("#butonRegistrar").click(function (e) {
-  //   e.preventDefault();
-  //   // Capturamos los datos enviados por el formulario de registro
-  //   // Campo email
-  //   var email = $("#IngresoEmail").val();
-  //   //Campo Password
-  //   var password = $("#ingresoPassword").val();
-  //   // Metodo de firebase que permite registro de usarios con email
-  //   auth
-  //     .createUserWithEmailAndPassword(email, password)
-  //     .then(userCredential => {
-  //       // limpiar formulario de registro
-  //       $("#IngresoEmailForm").trigger("reset");
-  //     })
-  //     .catch((error) => { // Esto permite capturar el error, se puede trabajar este catch con los codigos de error
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-  //       // Muestro en la consola el codigo de error y el mensaje de error
-  //       if (error.code == 'auth/email-already-in-use') {
-  //         $("#alert-login-registro").removeClass("d-none");
-  //         $("#alert-login-registro").addClass("d-block");
-  //       }
-  //     });
-
-  // })
-
-
+  })
+  
+  //MODIFICANDO ESTA PARTE
+  // Acceso de usuarios
+  // Ingresar por email
+  $("#butonIngresoCorreo").click(function (e) {
+    e.preventDefault();
+    // Mostramos formulario de ingreso por email
+    $("#input_parameters").show();
+    // Ocultamos boton de ingreso por email
+    $("#butonIngresoCorreo").hide();
+    $("#login").hide();
+  })
 
   // Si ingresamos por correo y password mostramos formulario de ingreso 
   $("#butonIngresarCorreo").click(function (e) {
@@ -108,7 +96,10 @@ $(document).ready(function(){
         .signInWithEmailAndPassword(email, password)
         .then(userCredential => {
           // limpiar formualrio de ingreso
-          $("#ingresoCorreo").trigger("reset");
+          $("#inicioSesion").trigger("reset");
+          // $("#contenedor1").hide;
+          // $("#contenedorRegistar").hide;
+          // $("#contenidoWeb").show;
           $("#alert-login").hide();
           $("#alert-login-registro").hide();
         })
@@ -126,71 +117,56 @@ $(document).ready(function(){
     }
 
   })
-
-  // Acceso de usuarios
-  // Ingresar por email
-  $("#butonIngresarCorreo").click(function (e) {
+  
+    // Ingresar con google
+    $("#butonIngresoGoogle").click(function (e) {
+      e.preventDefault();
+      auth.signInWithPopup(provider)
+        .then(result => {
+          console.log("Ingreso con Google");
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    })
+  
+    // Desconexion de Usuarios
+  // Boton LogOut
+  $("#btn-CerrarSesion").click(function (e) {
     e.preventDefault();
-    // Mostramos formulario de ingreso por email
-    $("#contenedorLogin").hide();
-    // Ocultamos boton de ingreso por email
-    $("#contenedorRegistar").hide();
-    //Mostramos el contenido de la pagina
-    $("#contenidoWeb").hide();
+    auth.signOut().then(() => {
+      console.log("Log Out");
+    })
   })
 
-  // Ingresar con google
-  $("#btnIngresoGmail").click(function (e) {
-    e.preventDefault();
-    auth.signInWithPopup(provider)
-      .then(result => {
-        console.log("Ingreso con Google");
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  })
+  // Ver si sesion esta activa
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      // Si usuario esta conectado
+      // ocultamos el login
+      $("#contenedor1").hide();
+      // ocultamos el formulario de registro
+      $(".registro-usuario").hide();
+      // mostramos el contenido
+      $("#contenidoWeb").show();
+      // obtienePaises();
+    } else {
+      // Si usuario esta desconectado
+      // Se oculta formulario de registro
+      $(".registro-usuario").hide();
+      // Se oculta formulario de ingreso
+      $("#input_parameters").hide();
+      // Se muestra el boton de ingreso por email
+      $("#butonIngresoCorreo").show();
+      // Se oculta contenido de la página
+      $("#contenidoWeb").hide();
+      // Se muestra el login
+      $("#contenedor1").show()
+      // Se muestra el login
+      $("#login").show()
+    }
+  });
 
-    // A PARTIR DE AQUI ES LA VERSION INCOMPLETA
-    // Si ingresamos por correo y password mostramos formulario de ingreso (DESBLOQUEA ABAJO DE AQUI )
-  // $("#butonIngresarCorreo").click(function (e) {
-  //   e.preventDefault();
-  //   // Capturamos los datos enviados por el formulario de ingreso
-  //   // Campo email
-  //   var email = $("#ingresoCorreo").val();
-  //   // Campo Password
-  //   var password = $("#ingresoContraseña").val();
 
-  //     $("#contenedorLogin").hide;
-  //     $("#contenedorRegistar").hide;
-  //     $("#contenidoWeb").show;
-  //   // Metodo que permite ingreso de usarios con email
-  //   auth
-  //     .signInWithEmailAndPassword(email, password)
-  //     .then(userCredential => {
-  //       // limpiar formualrio de ingreso
-  //       $("#IngresoCorreo").trigger("reset");
-        
-  //     })
-  //     .catch((error) => {// Esto permite capturar el error, se puede trabajar este catch con los codigos de error
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-  //       console.log(errorCode, errorMessage);
-  //     });
-  //  })
-   
-  //  // Ingresar con google
-  //  $("#butonIngresoGoogle").click(function (e) {
-  //   e.preventDefault();
-  //   auth.signInWithPopup(provider)
-  //     .then(result => {
-  //       console.log("Ingreso con Google");
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-    //   })
-    // })
     
-
-})
 });

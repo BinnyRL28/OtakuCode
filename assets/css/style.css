@@ -132,13 +132,80 @@ header h2{
     background: linear-gradient( rgb(247, 3, 97), #ff9900);
 }
 
+#personajes{
+    border: 1px solid red;
+    border-radius:380px;
+    width: 90%;
+    height: 60%;
+    margin:auto;
+}
+
+#informacionPagina{
+    outline: 1px solid blue;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+#contenedor1{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#texto-pagina{
+    outline: 2px solid yellow;
+    margin:auto;
+}
+
+#contenedorLogin{
+    outline: 1px solid violet;
+}
+
+#proveedoresAdicionales{
+    display:flex;
+    flex-direction:column;
+}
+
+#iconoAtras{
+    background-color: white ;
+}
+
+#butonVolverIngreso{
+    align-items: center;
+    float: right;
+    outline: 1px solid blue;
+}
+
+#registroUsuario{
+    display:flex;
+    flex-direction:column;
+    outline: 1px solid blue;
+    width: auto;
+}
+
+#registroUsuario input{
+    width: 300%;
+}
+
+#contenedorGeneral{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid green;
+    width: auto;
+}
+
 
 @media only screen and (max-width: 600px){
     header{
         width:100%;
     }
 
-    #contenedorLogin{
+    #contenedor1{
         display:flex;
         flex-direction: column;
     }
