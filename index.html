@@ -26,9 +26,9 @@
               <div id="logo-otakucode">
                 <img width="320px" height="320px" src="assets/img/Logo-OtakuCode.png" alt="logo-OtakuCode">
               </div>
-              <h4 class="mb-3">Formas de ingreso</h3>
+              <h4 class="mb-6 text-white">Formas de ingreso</h3>
   
-                <div id="proveedoresAdicionales" class="text-center">
+                <div id="proveedoresAdicionales" class="text-center text-white">
                     <button id="butonIngresoGoogle" class="btn bg-danger text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
                             <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
@@ -44,22 +44,33 @@
                       </svg> Correo </button>
                     
                     <div class="m-2 ">
-                      <p><strong>Si no tienes una cuenta creada </strong><button type="button" class="btn bg-white p-1 " id="butonRegistrate">Registrate</button></p>
+                      <p><strong>Si no tienes una cuenta creada </strong><button type="button" class="btn text-white  p-1 " id="butonRegistrate">Registrate</button></p>
                      </div>
                 </div>
             </div>                  
                   <div id="contenedorLogin" class="" style="display:none;">
+
+                    <form >
+                      <div id="contenedorVolverLogin">
+                        <button id="butonVolverRegistro" type="submit" class="btn">
+                          <svg  xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-reply" viewBox="0 0 16 16">
+                            <path  id="iconoAtras" d="M6.598 5.013a.144.144 0 0 1 .202.134V6.3a.5.5 0 0 0 .5.5c.667 0 2.013.005 3.3.822.984.624 1.99 1.76 2.595 3.876-1.02-.983-2.185-1.516-3.205-1.799a8.74 8.74 0 0 0-1.921-.306 7.404 7.404 0 0 0-.798.008h-.013l-.005.001h-.001L7.3 9.9l-.05-.498a.5.5 0 0 0-.45.498v1.153c0 .108-.11.176-.202.134L2.614 8.254a.503.503 0 0 0-.042-.028.147.147 0 0 1 0-.252.499.499 0 0 0 .042-.028l3.984-2.933zM7.8 10.386c.068 0 .143.003.223.006.434.02 1.034.086 1.7.271 1.326.368 2.896 1.202 3.94 3.08a.5.5 0 0 0 .933-.305c-.464-3.71-1.886-5.662-3.46-6.66-1.245-.79-2.527-.942-3.336-.971v-.66a1.144 1.144 0 0 0-1.767-.96l-3.994 2.94a1.147 1.147 0 0 0 0 1.946l3.994 2.94a1.144 1.144 0 0 0 1.767-.96v-.667z"/>
+                          </svg>
+                        </button>  
+                      </div>
+                    </form>
+
                 <div id="input_parameters" style="">
              <form id="inicioSesion">
                 <div id="logo-otakucode">
                     <img width="220px" height="220px" src="assets/img/Logo-OtakuCode.png" alt="logo-OtakuCode">
                 </div>
-                <div id="alert-login" class="alert alert-danger d-none" role="alert">
+                <!-- <div id="alert-login" class="alert alert-danger d-none" role="alert">
                   Email y contraseña incorrectos.
                 </div>
                 <div id="alert-login-registro" class="alert alert-danger d-none" role="alert">
                   Email ya se encuentra registrado, favor utilizar otro.
-                </div>
+                </div> -->
                 <div id="contenedorDatos">
                     <div id="contenedorCorreo" class="m-2">
                         <label for="correo">Correo
@@ -79,11 +90,11 @@
                     </div>
                 </div>
                 <button type="submit" class="btn bg-white text-white m-3" id="butonIngresarCorreo"><strong>Ingresar</strong></button>
-                <button type="submit" style="float:right;" class="btn  m-1" id="butonVolverIngreso">
+                <!-- <button type="submit" style="float:right;" class="btn  m-1" id="butonVolverIngreso">
                   <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-reply" viewBox="0 0 16 16">
                     <path  id="iconoAtras" d="M6.598 5.013a.144.144 0 0 1 .202.134V6.3a.5.5 0 0 0 .5.5c.667 0 2.013.005 3.3.822.984.624 1.99 1.76 2.595 3.876-1.02-.983-2.185-1.516-3.205-1.799a8.74 8.74 0 0 0-1.921-.306 7.404 7.404 0 0 0-.798.008h-.013l-.005.001h-.001L7.3 9.9l-.05-.498a.5.5 0 0 0-.45.498v1.153c0 .108-.11.176-.202.134L2.614 8.254a.503.503 0 0 0-.042-.028.147.147 0 0 1 0-.252.499.499 0 0 0 .042-.028l3.984-2.933zM7.8 10.386c.068 0 .143.003.223.006.434.02 1.034.086 1.7.271 1.326.368 2.896 1.202 3.94 3.08a.5.5 0 0 0 .933-.305c-.464-3.71-1.886-5.662-3.46-6.66-1.245-.79-2.527-.942-3.336-.971v-.66a1.144 1.144 0 0 0-1.767-.96l-3.994 2.94a1.147 1.147 0 0 0 0 1.946l3.994 2.94a1.144 1.144 0 0 0 1.767-.96v-.667z"/>
                   </svg>
-                </button>
+                </button> -->
   
   
                 <!-- <h4 class="mb-3">Otras formas de ingreso</h3>
@@ -124,8 +135,8 @@
                   </button>  
                 </div>
 
-                <div id="contenidoDeregistroUsuario">
-                  <h3>Registro de Usuario</h5>
+                <div id="contenidoDeregistroUsuario" class="">
+                  <h3 class="text-center">Registro de Usuario</h5>
                     <div id="logo-otakucode">
                       <img width="220px" height="220px" style="margin-left:15px;"src="assets/img/Logo-OtakuCode.png" alt="logo-OtakuCode">
                     </div>
@@ -160,11 +171,11 @@
             
   
             <div id="informacionPagina" class="bg-black text-white text-center d-1" style="width:60%;">
-              <img src="assets/img/Personajes.jpg" id="personajes" alt="Personajes del anime en general">
+              <img src="https://c4.wallpaperflare.com/wallpaper/855/525/214/anime-bangs-checkered-cities-wallpaper-preview.jpg" id="personajes" alt="Personajes del anime en general">
               <h2>OtakuCode...</h2>
               <div style="width:80%; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif " class="text-center" id="texto-pagina">
-                <p>En OtakuCode podrás encontrar un espacio donde podrá socializarás con muchos otakus que hablarán de diversos animes</p>
-                <p>!No te pierdas la oportunidad de ser parte de esta gran comunidad! !Unétenos...!</p>
+                <p>En OtakuCode podrás encontrar un espacio donde podrá socializarás con muchos otakus que hablarán de diversos animes.    
+                !No te pierdas la oportunidad de ser parte de esta gran comunidad! !Unétenos...!</p>
               </div>
             </div>
           </div>
@@ -213,7 +224,7 @@
                       </div>
                   </form>
               </div>
-              <div class="card bg-dark text-white mx-auto" id="contenidoWeb" style="border-radius: 1rem; width: 800px; margin-top:20px; display:none">
+              <div class="card bg-dark text-white mx-auto" id="contenidoWeb" style="border-radius: 1rem; margin-top:20px; display:none">
                 <div class="card-body" style="float:right; margin:0;">
                   <form id="postForm"action="">
                     
@@ -231,11 +242,14 @@
                     </div>
                   </form>
                 </div>
+
+                
+
               </div>
               <div id="postList">
                 
               </div>
-        </div>
+        <!-- </div> -->
       </main>
     </section>
     <script

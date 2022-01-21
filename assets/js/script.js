@@ -21,6 +21,9 @@ $(document).ready(function(){
   
     // Inicializar Auth de Google
     var provider = new firebase.auth.GoogleAuthProvider();
+
+    // Inicializar Auth de Facebook
+    var provider2 = new firebase.auth.FacebookAuthProvider();
   
     // Inicializar Firestore (Base de datos)
     const db = firebase.firestore();
@@ -122,7 +125,7 @@ $(document).ready(function(){
     $("#butonIngresoGoogle").click(function (e) {
       e.preventDefault();
       auth.signInWithPopup(provider)
-        .then(result => {
+        .then(result => { 
           console.log("Ingreso con Google");
         })
         .catch(err => {
@@ -130,6 +133,18 @@ $(document).ready(function(){
         })
     })
   
+    // Ingresar con Facebook
+  $("#btnIngresoFacebook").click(function (e) {
+    e.preventDefault();
+    auth.signInWithPopup(provider2)
+      .then(result => {
+        console.log("Ingreso con Facebook");
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  })
+
     // Desconexion de Usuarios
   // Boton LogOut
   $("#btn-CerrarSesion").click(function (e) {
@@ -149,6 +164,8 @@ $(document).ready(function(){
       $(".registro-usuario").hide();
       // mostramos el contenido
       $("#contenidoWeb").show();
+      // mostramos los 
+      $("#postList").show();
       // obtienePaises();
     } else {
       // Si usuario esta desconectado
@@ -160,6 +177,7 @@ $(document).ready(function(){
       $("#butonIngresoCorreo").show();
       // Se oculta contenido de la página
       $("#contenidoWeb").hide();
+      $("#postList").hide();
       // Se muestra el login
       $("#contenedor1").show()
       // Se muestra el login
@@ -208,8 +226,8 @@ $(document).ready(function(){
       data.forEach(doc => {
         const post = doc.data();
         const div = `
-          <div class="card bg-dark text-white  mt-3 mx-auto" style="border-radius: 1rem; width: 800px;">
-            <div class="card-body">
+          <div class="card  text-black  mt-4 display-10 p-0" style="border-radius: 1rem; width: 600px;display:block" id="contenedorpostList">
+            <div class="card-body" >
               <p>${post.mensaje}</p>
               <p>Publicado el ${post.fecha} a las ${post.hora}</p>
             </div>
