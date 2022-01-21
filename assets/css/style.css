@@ -8,6 +8,8 @@ header{
 
 body{
     background-color: rgb(27, 27, 27);
+    align-items: center;
+    justify-content: center;
 }
 
 *{
@@ -29,7 +31,7 @@ main{
     /* background-color: black; */
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     /* outline: 1px solid yellow; */
     height: auto;
@@ -140,14 +142,17 @@ header h2{
     width: 90%;
     height: 60%;
     margin:auto;
+    margin-top:20px;
+    /* box-shadow: 100px 1000px white;  */
 }
 
 #informacionPagina{
-    outline: 1px solid blue;
+    /* outline: 1px solid yellowgreen; */
     width: auto;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    margin:20px;
+    /* background-color: white; */
 }
 
 #contenedor1{
@@ -155,11 +160,14 @@ header h2{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 #texto-pagina{
-    outline: 2px solid yellow;
+    /* outline: 2px solid yellow; */
     margin:auto;
+
 }
 
 #contenedorLogin{
@@ -181,30 +189,91 @@ header h2{
     outline: 1px solid blue;
 }
 
+#contenedorRegistar{
+    width: 480px;
+    /* outline:1px solid maroon; */
+    height: 600px;
+    justify-content: center;
+    align-items:center;
+    padding:auto;
+    margin-left:0;
+}
+
 #registroUsuario{
     display:flex;
     flex-direction:column;
-    outline: 1px solid blue;
-    width: auto;
+    /* outline: 1px solid pink; */
+    width: 100%;
+    margin:0;
+    height:  390px;
+    /* justify-content:left; */
+    /* align-items: center; */
+    /* margin-right:90px; */
+    /* justify-content: space-around; */
+}
+
+#contenidoDeregistroUsuario{
+    /* outline:1px solid white; */
+    align-items: center;
+    justify-content: stretch;
+    margin-right: 10px;
+    margin-left: 110px;
+    width: 70%;
+    padding:15px;
+
+    border: 5px solid transparent;
+    
+    border-image: linear-gradient(to left, #ff9900 , rgb(247, 3, 97));
+    
+    -webkit-border-image: -webkit-linear-gradient(to left, #ff9900 , rgb(247, 3, 97));
+    
+    border-image-slice: 1;
+    /* padding:10px; */
+    /* text-align: center; */
+}
+
+#contenedorVolverRegistrar{
+    margin-bottom:-39px;
+    background-image: linear-gradient( rgb(247, 3, 97), #ff9900); 
+    float:left;
+    width: 50px;
+    border-radius:20px;
+}
+
+#butonsDeRegistrar{
+    width: 34%;
+    justify-content: space-around;
+    align-items: center;
+    outline: 1px solid royalblue;
+    margin: auto;
+    margin-bottom:10px;
+}
+
+#butonRegistrar{
+    background-image: linear-gradient( rgb(247, 3, 97), #ff9900); ;
+}
+
+#registroUsuario h3{
+    margin-bottom:15px;
 }
 
 #registroUsuario input{
-    width: 300%;
+    width: 100%;
+    margin-bottom:40px;
 }
 
 #contenedorGeneral{
     display:flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     outline: 1px solid violet;
     width: auto;
-    height: auto;
-    margin:50px auto;
+    height: 100%;
 }
 
 header h2{
-    font-family:monospace;
+    font-family:Helvetica;
 }
 
 @media only screen and (max-width: 600px){
