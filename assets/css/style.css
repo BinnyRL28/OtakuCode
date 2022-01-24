@@ -7,7 +7,10 @@ header{
 }
 
 body{
-    background-color: rgb(27, 27, 27);
+    background: url("blob:https://web.whatsapp.com/9bc4d6ba-8422-4c9c-aeee-b746127e5c42") ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center ;
     align-items: center;
     justify-content: center;
 }
@@ -133,7 +136,7 @@ main{
 
 header h2{
     width:89%;
-    font-family: monospace;
+    font-family: fantasy;
 }
 
 #btnSendPost{
@@ -316,7 +319,7 @@ header h2{
 }
 
 #postList{
-    overflow:scroll;
+    overflow-y:scroll;
     height: 600px;
     margin-right: 30px;
     margin-top:30px;
