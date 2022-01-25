@@ -10,7 +10,7 @@ html{
 header{
     max-height: 60px;
     width: 100%;
-    background: linear-gradient(to right, #ff9900 , rgb(247, 3, 97));
+    background: linear-gradient(to right, #ff9900d8 , rgba(247, 3, 97, 0.836));
     display: flex;
     align-items: center;
     /* outline: 2px solid green; */
@@ -41,7 +41,8 @@ section{
 }
 
 .pantalla{
-    background: linear-gradient(to right, #ff99003f , rgba(247, 3, 97, 0.247));
+    /*background: linear-gradient(to right, #ff99003f , rgba(247, 3, 97, 0.247));
+    */
     width: 100%;
     height: 100%;
 }
@@ -49,7 +50,7 @@ section{
 .background{
     width: 100%;
     height: 100%;
-    background-image: url(/assets/img/wallpaperbetter41.jpg);
+    background-image: url(/assets/img/wallpaperbetter.com_1920x1080-14.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center ;
