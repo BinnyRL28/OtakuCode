@@ -12,6 +12,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="assets/css/styleMedia.css">
 </head>
 <body class="bg-black">
   <div class="background">
@@ -177,7 +178,7 @@
             <div id="informacionPagina" class=" text-white text-center d-1" >
               <div>
                 <img src="assets/img/wallpaperbetter.com_1920x1080-8.jpg" id="personajes" alt="Personajes del anime en general">
-                <h2 class="infoOtakuCode">OtakuCode...</h2>
+                <h2>OtakuCode...</h2>
               <div style="width:90%; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif " class="text-center" id="texto-pagina">
                 <p>En OtakuCode podrás encontrar un espacio donde podrá socializarás con muchos otakus que hablarán de diversos animes.    
                 !No te pierdas la oportunidad de ser parte de esta gran comunidad! !Unétenos...!</p>
@@ -189,7 +190,7 @@
   
               
                   
-                <div id="contenedorInformacionAdicional">  
+                <!--div id="contenedorInformacionAdicional">  
                   <form id="informacionAdicional" style="display:none">
                     <h3>Cuéntanos más sobre ti (Opcional)</h3>
                       <div class="bloques text-center" id="bloque1">
@@ -230,23 +231,29 @@
                           </div>
                       </div>
                   </form>
-              </div>
+              </div-->
               <div class="card bg-dark text-white mx-auto" id="contenidoWeb" style="border-radius: 1rem; margin-top:20px; display:none">
                 <div class="card-body" style="float:right; margin:0;">
                   <form id="postForm"action="">
-                    
                     <h5>Escribe tu mensaje</h5>
                     <label class="form-label" for="postText">Mensaje</label>
                     <div class="form-outline form-white mb-4">
                       <textarea class="form-control form-control-lg bg-dark form-outline-white text-white" id="postText" rows="3"></textarea>
                     </div>
-                    <div id="opcionesPost">
-                      <button id="btnSendPost" class="btn btn-outline-dark btn-lg px-5" type="submit">Publicar</button>
-                      <div style="float:right">
-                        <button id="btnEditar" class="btn btn-outline-dark bg-primary  px-5" type="submit">Editar</button>
-                        <button id="btnEliminar" class="btn btn-outline-dark bg-danger   px-5" type="submit">Eliminar</button>
-                      </div>
+
+                    <label class="form-label" for="postFile">Subir Archivo</label>
+                    <div class="form-outline form-white mb-4">
+                      <input type="file" id="postFile" class="form-control form-control-lg">
                     </div>
+
+                    <button id="btnSendPost" 
+                      type = "submit" 
+                      class="btn btn-outline-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                          <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                        </svg>
+                        <!-- Publicar -->
+                      </button>
                   </form>
                 </div>
 

@@ -1,0 +1,28 @@
+@media screen and (max-width: 600px){
+    header{
+        width:100%;
+    }
+
+    #contenidoWeb{
+        width: 80%;
+    }
+
+    #postList{
+        width: 80%;
+    }
+    
+    #contenedor1{
+        display:flex;
+        flex-direction: column;
+    }
+    #btnSendPost{
+        margin: 0;
+        width: auto;
+
+        display: flex;
+        justify-content: center;
+    }
+    .bi-send{
+        margin: 4px;
+    }
+}

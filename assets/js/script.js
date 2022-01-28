@@ -226,10 +226,10 @@ $(document).ready(function(){
       data.forEach(doc => {
         const post = doc.data();
         const div = `
-          <div class="card  text-black  mt-4 display-10 p-0" style="border-radius: 1rem; width: 600px;display:block" id="contenedorpostList">
+          <div class="card  text-black  mt-4 display-10 p-0" style="border-radius: 1rem; width: 100%;display:block" id="contenedorpostList">
             <div class="card-body" >
-              <p>${post.mensaje}</p>
-              <p>Publicado el ${post.fecha} a las ${post.hora}</p>
+              <p class="mensajePublicado">${post.mensaje}</p>
+              <p class="fechaPost">Publicado el ${post.fecha} a las ${post.hora}</p>
             </div>
           </div>
         `;
