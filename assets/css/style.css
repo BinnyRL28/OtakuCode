@@ -327,7 +327,7 @@ header h2{
     width: 100%;
 }
 
-#contenedorpostList{
+/* #contenedorpostList{
     background: linear-gradient(  #fdd57f, rgb(236, 118, 153));
     border: 5px solid transparent;
     
@@ -336,10 +336,10 @@ header h2{
     -webkit-border-image: -webkit-linear-gradient(to left, #ff9900 , rgb(247, 3, 97));
     
     border-image-slice: 1;
-}
+} */
 
 #contenidoWeb{
-    width: 50%;
+    width: 100%;
 }
 
 #imagePost, #userPhoto{

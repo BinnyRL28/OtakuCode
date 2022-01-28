@@ -54,7 +54,7 @@ $(document).ready(function(){
     //Campo Password
     var password = $("#registroPassword").val();
     //Campo confirmacion Contraseña
-    var confirmacion = $("#registroConfirmacionPassword").val();
+    // var confirmacion = $("#registroConfirmacionPassword").val();
     //Campo confirmacion Contraseña
     var fullName = $("#registroNombre").val();
     // Metodo de firebase que permite registro de usarios con email
@@ -63,10 +63,10 @@ $(document).ready(function(){
       alert(" ⚠️ Deben ser 6 carácteres como mínimo")
     };
 
-    if (password !== confirmacion) {
-      auth.stop();
-      alert(" ⚠️ Contraseñas distintas")
-    }
+    // if (password !== confirmacion) {
+    //   auth.stop();
+    //   alert(" ⚠️ Contraseñas distintas")
+    // }
 
     auth
     .createUserWithEmailAndPassword(email, password)
@@ -83,8 +83,9 @@ $(document).ready(function(){
     .catch((error) => { // Esto permite capturar el error, se puede trabajar este catch con los codigos de error
       var errorCode = error.code;
       var errorMessage = error.message;
+      console.log(errorCode, errorMessage)
       // Muestro en la consola el codigo de error y el mensaje de error
-      if (error.code == 'auth/email-already-in-use') {
+      if (errorCode == 'auth/email-already-in-use') {
         $("#alert-login-registro").removeClass("d-none");
         $("#alert-login-registro").addClass("d-block");
       }
@@ -185,8 +186,8 @@ $(document).ready(function(){
       // mostramos el contenido
       $("#contenidoWeb").show();
       // mostramos los 
-      $("#postList").show();
-      obtienePost();
+      // $("#postList").show();
+      obtienePosts();
       loadUserInfo();
     } else {
       // Si usuario esta desconectado
@@ -241,7 +242,7 @@ $(document).ready(function(){
            const name = strDate + "-" + strHours + "-" + file.name;
            agregarImagen(file, name, id);
          }
-          obtienePost();
+          obtienePosts();
         })
         .catch((error) => {
           console.error("Error adding document: ", error);
@@ -274,7 +275,7 @@ $(document).ready(function(){
       .then(() => {
         console.log("Posteo actualizado correctamente");
         $("postForm").trigger("reset");
-        obtienePost();
+        obtienePosts();
 
         $("#btnSendPost").show();
         $("#btnSavePost").hide();
@@ -346,18 +347,18 @@ $(document).ready(function(){
   }
 
   // Consulta y ordena los post del mas nuevo al mas antiguo
-  function obtienePost() {
+  function obtienePosts() {
     db.collection("posts").orderBy('orderDate', 'desc').get().then((querySnapshot) => {
       postList(querySnapshot.docs);
     })
   };
 
   // Consulta y ordena los post del mas nuevo al mas antiguo
-  function obtienePost() {
-    db.collection("posts").get().then((snapshot) => {
-      postList(snapshot.docs);
-    })
-  };
+  // function obtienePost() {
+  //   db.collection("posts").get().then((snapshot) => {
+  //     postList(snapshot.docs);
+  //   })
+  // };
 
   //Funcion que actuliza un posteo
   function obtienePost(id) {
@@ -381,7 +382,7 @@ $(document).ready(function(){
   function deletePost(id) {
     db.collection("posts").doc(id).delete().then(() => {
       // Si se elimina el post
-      obtienePost();
+      obtienePosts();
       window.location.reload();
     }).catch((error) => {
       console.log("Error al eliminar el posteo", error)
@@ -469,26 +470,26 @@ $(document).ready(function(){
 
 
   // Metodo que sirve para mostrar los países en la tabla
-  function postList(data) {
-    $("#postList").empty();
-    if (data.length > 0) {
-      let html = '';
-      data.forEach(doc => {
-        const post = doc.data();
-        const div = `
-          <div class="card  text-black  mt-4 display-10 p-0" style="border-radius: 1rem; width: 600px;display:block" id="contenedorpostList">
-            <div class="card-body" >
-              <p>${post.mensaje}</p>
-              <p>Publicado el ${post.fecha} a las ${post.hora}</p>
-            </div>
-          </div>
-        `;
-        html += div;
-      });
-      $("#postList").append(html);
-    }
-  };
-;
+//   function postList(data) {
+//     $("#postList").empty();
+//     if (data.length > 0) {
+//       let html = '';
+//       data.forEach(doc => {
+//         const post = doc.data();
+//         const div = `
+//           <div class="card  text-black  mt-4 display-10 p-0" style="border-radius: 1rem; width: 600px;display:block" id="contenedorpostList">
+//             <div class="card-body" >
+//               <p>${post.mensaje}</p>
+//               <p>Publicado el ${post.fecha} a las ${post.hora}</p>
+//             </div>
+//           </div>
+//         `;
+//         html += div;
+//       });
+//       $("#postList").append(html);
+//     }
+//   };
+// ;
 
   function loadUserInfo(){
     const user = firebase.auth().currentUser;
@@ -512,12 +513,12 @@ $(document).ready(function(){
             <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 100px;"  
           </div>
           <div id="userInfo" class="text-center">
-            <h3>"${displayName}</h3>
-            <h4>"${email}</h4>
+            <h3>${displayName}</h3>
+            <h4>${email}</h4>
           </div>
         </div>
           `;
-      $("userInfo").append(html);
+      $("#userInfo").append(html);
     }
   }
 
