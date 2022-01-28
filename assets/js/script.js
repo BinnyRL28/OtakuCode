@@ -34,6 +34,9 @@ $(document).ready(function(){
     // Inicializar Firestore (Base de datos)
     const db = firebase.firestore();
 
+    var tieneLike = 0;
+    var cantidadLikes = 0;
+
     
     //A
     $("#butonRegistrate").click(function (e) {
@@ -291,12 +294,17 @@ $(document).ready(function(){
 
   //Va a mostrar los datos en la vista
   function postList(data) {
+    
     const user = firebase.auth().currentUser;
     if(data.length > 0) {
       $("#postList").empty();
       let html = "";
       data.forEach(doc => {
+        contarLikes(doc.id)
         var post = doc.data();
+        // contarLikes(doc.id)
+        // console.log("vallor de data", doc.id)
+        
         var div = ``;
         if (user.uid == post.idUser) {
           div = `
@@ -311,6 +319,13 @@ $(document).ready(function(){
               <button data-id="${doc.id}" class="btn btn-danger btn-delete-post bi bi-trash">
                 Eliminar
               </button>
+              <button  data-id="${doc.id}" class="likes btn bg-white btn-outline-white" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+                  <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+                </svg>
+                Me gusta
+              </button>
+              <span>likes ${cantidadLikes}</span>
             </div>
           </div>
           `;
@@ -321,6 +336,13 @@ $(document).ready(function(){
               <p>${post.mensaje}</p>
               <img src="${post.urltext}" id="imagePost">
               <p>Publicado por ${post.userName}, el ${post.date}</p>
+              <button data-id="${doc.id}" class="btn bg-white btn-outline-white likes" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+                  <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+                </svg>
+                Me gusta
+              </button>
+              <span>likes ${cantidadLikes}</span>
             </div>
           </div>
           `;
@@ -340,8 +362,20 @@ $(document).ready(function(){
       
       var btnsDelete = document.querySelectorAll(".btn-delete-post");
       btnsDelete.forEach(btn => {
-        var id = e.target.dataset.id;
+
+        btn.addEventListener("click", (e) => {
+          var id = e.target.dataset.id;
         deletePost(id);
+        })
+      })
+
+      var btnsLike = document.querySelectorAll(".likes");
+      btnsLike.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          console.log(e);
+          var id = e.target.dataset.id;
+        agregarLike(id);
+        })
       })
     }
   }
@@ -349,8 +383,12 @@ $(document).ready(function(){
   // Consulta y ordena los post del mas nuevo al mas antiguo
   function obtienePosts() {
     db.collection("posts").orderBy('orderDate', 'desc').get().then((querySnapshot) => {
-      postList(querySnapshot.docs);
+          postList(querySnapshot.docs);
     })
+
+
+    // fireSQL.query("SELECT * FROM posts inner join likes on likes.idPost = posts.id group by likes.idPost")
+
   };
 
   // Consulta y ordena los post del mas nuevo al mas antiguo
@@ -535,7 +573,64 @@ $(document).ready(function(){
     });
   }
 
-  
+  async function agregarLike(id){
+    var espuesta =await userTieneLike(id);
+     
+    if(tieneLike == 1){
+      console.log("NO PUEDE VOLVER A DAR LIKE");
+    }else {
+      const user = firebase.auth().currentUser;
+      const idUser =  user.uid;
+      const like = $(".likes");
+      db.collection("likes").add({
+        User: idUser,
+        Fecha: '',
+        idPost: id,
+      }).then(() => {
+        // contarLikes(id)
+      // obtieneLikes();
+      })
+    }
+    
+  }
+
+ // Consulta y ordena los post del mas nuevo al mas antiguo
+  function obtieneLikes() {
+    db.collection("likes").get().then((snapshot) => {
+      postList(snapshot.docs);
+    })
+  };
+
+  function contarLikes(idPost){
+    
+    db.collection("likes").where("idPost", "==", idPost).get().then((result) => {
+      cantidadLikes = result.size;
+      console.log("CANT 1", cantidadLikes);
+      return cantidadLikes;
+    })
+    
+    
+  }
+
+  function userTieneLike(idPost){
+    const user = firebase.auth().currentUser;
+    const idUser =  user.uid;
+    let cantidad = 0;
+    db.collection("likes").where("idPost", "==", idPost).where("User", "==", idUser).get().then((result) => {
+      cantidad = result.size;
+      // console.log("CANTIDAD DE LIKES", result.size);
+      if(cantidad > 0){
+        console.log("NO PUEDE VOLVER A DAR LIKE");
+        return tieneLike = 1;
+      }
+      else{
+        console.log("El usuario aun no dio like");
+        return tieneLike = 0;
+      }
+    })
+  }
+
+
     
 });
 
@@ -550,17 +645,17 @@ $(document).ready(function(){
 //     .update({ likes: firebase.firestore.FieldValue.arrayRemove(uid) })
 // );
 
-var counterVal = 0;
+// var counterVal = 0;
 
-function incrementClick() {
-    updateDisplay(++counterVal);
-}
+// function incrementClick() {
+//     updateDisplay(++counterVal);
+// }
 
-function resetCounter() {
-    counterVal = 0;
-    updateDisplay(counterVal);
-}
+// function resetCounter() {
+//     counterVal = 0;
+//     updateDisplay(counterVal);
+// }
 
-function updateDisplay(val) {
-    document.getElementById("counter-label").innerHTML = val;
-}
+// function updateDisplay(val) {
+//     document.getElementById("counter-label").innerHTML = val;
+// }
