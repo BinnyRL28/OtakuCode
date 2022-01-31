@@ -50,7 +50,7 @@ section{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center ;
-    overflow: scroll;
+    /*overflow: scroll;*/
     
 }
 
@@ -337,7 +337,7 @@ header h2{
     flex-direction: column;
     margin: auto;
     margin-left: 20%;
-    margin-top: 12%;
+    margin-top: 0%;
     margin-right: 0%;
     width: max-content;
     padding: 25px;
@@ -514,6 +514,7 @@ header h2{
     padding: 0%;
     margin: 10px;
     padding-bottom: -10px;
+    padding-top: 10px;
     /*border-radius: 5px;*/
 }
 
@@ -523,7 +524,7 @@ header h2{
     justify-content: center;
     align-items: center;
     margin: 0;
-    padding-top: 10px;
+    border-radius: 10px;
 }
 
 #btn-Like:active{
