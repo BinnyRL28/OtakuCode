@@ -93,6 +93,14 @@ body{
     color: white;
 }
 
+#contenedorDatos label{
+    width: 100%;
+}
+
+#contenedorDatos{
+    width: 100%;
+}
+
 main{
     /* background-color: rgb(27, 27, 27); */
     /* background-color: black; */
@@ -429,13 +437,25 @@ header h2{
     color: #2ef8a0ea;
 }
 
+#userInfo{
+    /*background: rgb(50, 51, 53);*/
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
 #userProfile{
     width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
 }
 
 #userPhoto{
     margin: auto;
-    margin-top: 10%;
+    margin-top: 0%;
 }
 
 #postText{

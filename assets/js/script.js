@@ -553,7 +553,7 @@ $(document).ready(function(){
   
         html = 
             `
-          <div class="card-body text-center">
+          <div class="card-body text-center contenedorUsuario">
             <div>
               <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 100px;"  
             </div>
