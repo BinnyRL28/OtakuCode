@@ -12,7 +12,7 @@ header{
     width: 100%;
     background: linear-gradient(to right, #ff9900d8 , rgba(247, 3, 97, 0.836));
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     /* outline: 2px solid green; */
 }
 header div{
@@ -21,7 +21,7 @@ header div{
 
 section{
     width: 100%;
-    height: 90%;
+    height: 100%;
     
 }
 
@@ -30,7 +30,7 @@ section{
     width: 100%;
     height: 100%;
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     /*padding-top: 3%;*/
@@ -39,17 +39,18 @@ section{
 .pantalla{
     background-color:rgba(56, 66, 66, 0.5);
     
-    width: 100%;
+    /*width: 100%;*/
     height: 100%;
 }
 
 .background{
     width: 100%;
-    height: 100%;
+    height: 94%;
     background-image: url(https://www.comunidadxbox.com/wp-content/uploads/2021/02/bda6ead6f931533e899ff1b150fb49ac-scaled.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center ;
+    overflow: scroll;
     
 }
 
@@ -61,12 +62,35 @@ body{
 }
 
 #inicioSesion{
-    border-image: linear-gradient(to right, #ff9900 , rgb(247, 3, 97));
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    color:white;
+    /*border-image: linear-gradient(to right, #ff9900 , rgb(247, 3, 97));
+    padding: 8px;*/
+    /*display: flex;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
+    padding: 20px;*/
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+    /*margin-left: 10%;
+    margin-right: 3%*/
+}
+
+.contenedorIngresoCorreo{
+    background: rgb(0, 0, 0, 0.8);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    height: 120%;
+    margin-left: 10%;
+    margin-top: 10%;
+    margin-bottom: 30%;
+    width: 100%;
+    height: 100%;
+    color: white;
 }
 
 main{
@@ -130,19 +154,15 @@ main{
 }
 
 #input_parameters {
-    
-    border: 5px solid transparent;
-    
-    border-image: linear-gradient(to left, #ff9900 , rgb(247, 3, 97));
-    
-    -webkit-border-image: -webkit-linear-gradient(to left, #ff9900 , rgb(247, 3, 97));
-    
-    border-image-slice: 1;
-    border-radius: 20px;
-    margin:10px;
-    margin-top:60px;
-    float:right;
-    width:60%;
+    /*background: rgb(0, 0, 0, 0.8);*/
+    /*border-radius: 10px;*/
+    /*display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;*/
+    /*padding: 20px;*/
+    height: 120%;
+    width: 100%;
     }
 
 #bloque4{
@@ -186,10 +206,9 @@ header h2{
 #personajes{
     border: none;
     border-radius:30%;
-    width: 90%;
+    width: 70%;
     margin:auto;
     padding: 25px;
-    
     /* padding-left:-300px; */
     /* box-shadow: 100px 1000px white;  */
 }
@@ -217,7 +236,7 @@ header h2{
 #contenedor1{
     display:flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content:space-around;
     align-items: center;
     height: 100%;
     width: 100%;
@@ -231,10 +250,9 @@ header h2{
 
 #contenedorLogin{
     /* outline: 1px solid turquoise; */
-    width:29%;
-    height: 580px;
+    /**width:29%;
     margin:auto;
-    justify-content: center;
+    justify-content: center;*/
 }
 
 #login{
@@ -242,10 +260,22 @@ header h2{
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     padding: 20px;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#logo-otakucode-Login{
+    display: flex;
+    justify-content: center;
+
 }
 
 #butonRegistrate{
     background:  linear-gradient( rgb(247, 3, 97), #ff9900);
+    border: none;
 }
 
 #proveedoresAdicionales{
@@ -258,28 +288,40 @@ header h2{
 }
 
 #butonVolverIngreso{
-    align-items: center;
-    float: right;
-    outline: 1px solid blue;
+    margin-left: 5px;
+    width: 10px;
+    height: min-content;
 }
 
 #contenedorRegistar{
-    width: 480px;
+    width: auto;
     /* outline:1px solid maroon; */
-    height: 600px;
-    justify-content: center;
+    height: 100%;
+    margin-right: 10%;
+    /*justify-content: center;
     align-items:center;
-    padding:auto;
-    margin-left:0;
+    padding:auto;*/
+}
+
+#butonVolverRegistro{
+    display: flex;
+    float: left;
+    width: min-content;
+    height: min-content;
+    /*margin-left: 100%;*/
 }
 
 #registroUsuario{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
+    width: max-content;
+    height: 100%;
+    margin:3%;
+    display: inline-block;
     /* outline: 1px solid pink; */
-    width: 100%;
-    margin:0;
-    height:  390px;
+    /*width: max-content;*/
+    /*margin:auto;*/
+    /*height: auto;*/
     /* justify-content:left; */
     /* align-items: center; */
     /* margin-right:90px; */
@@ -288,34 +330,40 @@ header h2{
 
 #contenidoDeregistroUsuario{
     /* outline:1px solid white; */
+    display: flex;
+    display: inline-block;
     align-items: center;
-    justify-content: stretch;
-    margin-right: 10px;
-    margin-left: 110px;
-    width: 70%;
-    padding:15px;
-
-    border: 5px solid transparent;
-    
-    border-image: linear-gradient(to left, #ff9900 , rgb(247, 3, 97));
-    
-    -webkit-border-image: -webkit-linear-gradient(to left, #ff9900 , rgb(247, 3, 97));
-    
-    border-image-slice: 1;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    margin-left: 20%;
+    margin-top: 12%;
+    margin-right: 0%;
+    width: max-content;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
     /* padding:10px; */
     /* text-align: center; */
 }
 
+#logo-otakucode{
+    margin: auto;
+}
+
 #contenedorVolverRegistrar{
-    margin-bottom:-39px;
+    margin: auto;
     background-image: linear-gradient( rgb(247, 3, 97), #ff9900); 
-    float:left;
     width: 50px;
+    height: min-content;
     border-radius:20px;
+    margin-top: 10%;
+    margin-left: 0%;
+    display: flex;
 }
 
 #contenedorVolverLogin{
-    /* margin-bottom:-39px; */
+    margin-bottom:-39px; 
     background-image: linear-gradient( rgb(247, 3, 97), #ff9900); 
     float:left;
     width: 50px;
@@ -324,16 +372,18 @@ header h2{
 }
 
 #butonsDeRegistrar{
-    width: 34%;
+    display: flex;
     justify-content: space-around;
     align-items: center;
     /* outline: 1px solid royalblue; */
     margin: auto;
-    margin-bottom:10px;
+    height: min-content;
 }
 
 #butonRegistrar{
     background-image: linear-gradient( rgb(247, 3, 97), #ff9900); 
+    color: white;
+    border: none;
 }
 
 #registroUsuario h3{
@@ -342,7 +392,7 @@ header h2{
 
 #registroUsuario input{
     width: 100%;
-    margin-bottom:40px;
+    margin-bottom:20px;
 }
 /*
 #contenedorGeneral{
@@ -379,6 +429,15 @@ header h2{
     color: #2ef8a0ea;
 }
 
+#userProfile{
+    width: 100%;
+}
+
+#userPhoto{
+    margin: auto;
+    margin-top: 10%;
+}
+
 #postText{
     border: 1px solid #343a40;
 }
@@ -390,14 +449,13 @@ header h2{
     justify-content: center;
     align-items: center;
     margin: auto;
-    
+    height: 90%;
     width: 50%;
     background: rgba(59, 52, 52, 0.3);
     padding-left: 5%;
     padding-right: 5%;
-    padding-bottom: 5%;
-    margin-top: 20px;
     border-radius: 10px;
+    margin: 3%;
 }
 
 #postList::-webkit-scrollbar{
@@ -418,15 +476,15 @@ header h2{
     border-radius: 10px;
     border: 1px solid #2ef8a0;
     height: min-content;
-    padding-right: -20px;
-    padding-left: -5px;
+    margin-bottom: -10px;
 }
 
 .fechaPost{
     color: #f3eaec42;
     height: min-content;
     margin: 0;
-    padding-top: -5px;
+    margin-top: -2%;
+    padding-bottom: 10px;
 }
 
 #postForm{
@@ -437,21 +495,46 @@ header h2{
     /*background: linear-gradient( to right, rgb(236, 118, 153),#fdd57f);
     *//*border: 5px solid transparent;*/
     background: #343a40;
-    border-radius: px;
+    border-radius: 10px;
     /*border-image: linear-gradient(to left, #ff9900 , rgb(247, 3, 97));   
     -webkit-border-image: -webkit-linear-gradient(to left, #ff9900 , rgb(247, 3, 97));
     */
     /*border-image-slice: 1;*/
+    display: inline-block;
     display: flex;
     justify-content: center;
     align-items: center;
     /*height: 100%;*/
     width: 100%;
+    margin-top: 30px;
+}
+
+.contenedorImagePost{
+    /*border: 1px solid rgba(111, 111, 117, 0.5);*/
+    padding: 0%;
+    margin: 10px;
+    padding-bottom: -10px;
+    /*border-radius: 5px;*/
+}
+
+#imagePost{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding-top: 10px;
+}
+
+#btn-Like:active{
+    background-color:blue;
 }
 
 #contenidoWeb{
-    width: 50%;
-    padding: 10px;
+    width: 40%;
+    padding: 0.5%;
+    padding-top: 2%;
+    margin: 10%;
     display: flex;
 }
 
