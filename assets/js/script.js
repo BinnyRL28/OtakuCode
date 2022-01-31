@@ -295,6 +295,7 @@ $(document).ready(function(){
     function postList(data) {
       
       const user = firebase.auth().currentUser;
+      const photoURL = user.photoURL;
       if(data.length > 0) {
         $("#postList").empty();
         let html = "";
@@ -303,7 +304,7 @@ $(document).ready(function(){
           var post = doc.data();
           // contarLikes(doc.id)
           // console.log("vallor de data", doc.id)
-          
+         
           var div = ``;
           if (user.uid == post.idUser) {
             div = `
@@ -550,7 +551,7 @@ $(document).ready(function(){
           <div class="card-body text-center " >
           <div style="align-items:center; justify-content:center; ">
             <div id="contenedorUser" class="text-center;">
-              <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 100px; "  
+              <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 100px;"  
             </div>
             <div id="userInfo" class="text-center" >
               <h3>${displayName}</h3>
